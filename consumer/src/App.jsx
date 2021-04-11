@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Slider from "timarney-component/slider";
+import {Scheduler} from "timarney-component/slider";
 
 import "./index.css";
 
 const App = () => (
-    <Slider />
+    <Scheduler />
 );
 
 ReactDOM.render(<App />, document.getElementById("app"));
