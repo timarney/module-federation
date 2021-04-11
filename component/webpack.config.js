@@ -1,16 +1,15 @@
 const path = require("path");
-const { camelCase } = require("camel-case");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { camelCase } = require("camel-case");
 const { merge } = require("webpack-merge");
 
 const pkg = require("./package.json");
-
 const name = camelCase(pkg.name);
 
 // The modules you want to expose
 const exposes = {
-  "./slider": "./src/scheduler.js",
+  "./slider": "./src/main.js",
 };
 
 const deps = require("./package.json").dependencies;
