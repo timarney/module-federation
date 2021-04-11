@@ -10,7 +10,7 @@ const name = camelCase(pkg.name);
 
 // The modules you want to expose
 const exposes = {
-  "./slider": "./src/slider.jsx",
+  "./slider": "./src/scheduler.js",
 };
 
 const deps = require("./package.json").dependencies;

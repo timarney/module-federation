@@ -1,5 +1,5 @@
 import React from "react";
-import { Scheduler } from "./scheduler/Scheduler";
+import { Scheduler } from "./scheduler/";
 export default () => (
   <div>
     Slider
