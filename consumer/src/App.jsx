@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {Scheduler} from "timarney-component/main";
+import {Scheduler} from "@cdssnc/scheduler/main";
 
 import "./index.css";
 

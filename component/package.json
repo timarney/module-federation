@@ -1,5 +1,5 @@
 {
-  "name": "timarney-component",
+  "name": "@cdssnc/scheduler",
   "version": "1.0.7",
   "description": "",
   "main": "dist/node/remote-entry.js",

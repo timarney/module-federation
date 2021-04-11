@@ -3,7 +3,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { camelCase } = require("camel-case");
 
 const federatedRemotes = {
-  "timarney-component": "1.0.7",
+  "@cdssnc/scheduler": "1.0.7",
 };
 const deps = {
   ...federatedRemotes,
