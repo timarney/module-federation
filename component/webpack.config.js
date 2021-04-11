@@ -1,6 +1,7 @@
 const path = require("path");
 const { camelCase } = require("camel-case");
 const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
 
 const pkg = require("./package.json");
@@ -27,7 +28,9 @@ const baseConfig = {
   resolve: {
     extensions: [".jsx", ".js", ".json"],
   },
-
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
   module: {
     rules: [
       {
