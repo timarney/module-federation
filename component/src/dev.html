@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      /* RE: 62.5% 
+      See: https://www.sitepoint.com/understanding-and-using-rem-units-in-css */
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+    <link href="/style-rem.css" rel="stylesheet" type="text/css" />
+    <base href="/" />
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data" action="#">
+      <input type="hidden" id="scheduled_for" name="scheduled_for" value="" />
+      <div id="schedule-send-at"></div>
+      <div id="hidden-value"></div>
+    </form>
+  </body>
+</html>

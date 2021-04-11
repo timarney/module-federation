@@ -1,0 +1,53 @@
+{
+  "name": "timarney-component",
+  "version": "1.0.7",
+  "description": "",
+  "main": "dist/node/remote-entry.js",
+  "browser": "dist/browser/remote-entry.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "serve:dev": "node dev-server",
+    "build:dev": "webpack serve --open --mode development --liveReload --config ./webpack.config.dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^2.0.0",
+    "css-loader": "^5.2.1"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "camel-case": "^4.1.2",
+    "clean-webpack-plugin": "4.0.0-alpha.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  }
+}
