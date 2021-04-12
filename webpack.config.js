@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
@@ -13,19 +13,18 @@ const deps = {
 };
 
 const unpkgRemote = (name) => {
-  
   const pkg = `${camelCase(name)}@https://unpkg.com/${name}@${
     deps[name]
   }/dist/browser/remote-entry.js`;
 
+  console.log(`unpkgRemote ${pkg}`);
+
   //const pkg = `${camelCase(name)}@http://localhost:3000/dist/browser/remote-entry.js`
 
-  return pkg
+  return pkg;
+};
 
-}
-
-
-  const remotes = Object.keys(federatedRemotes).reduce(
+const remotes = Object.keys(federatedRemotes).reduce(
   (remotes, lib) => ({
     ...remotes,
     [lib]: unpkgRemote(lib),
@@ -39,7 +38,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, "dist/"),
   },
 
   devServer: {
