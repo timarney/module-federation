@@ -1,3 +1,5 @@
+// based on https://github.com/jherr/unpkg-mf-react-finished/blob/master/jherr-mf-slider/webpack.config.js
+
 const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");

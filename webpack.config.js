@@ -1,3 +1,6 @@
+
+// based on https://github.com/jherr/unpkg-mf-react-finished/blob/master/react-unpkg-mf-consumer-starter/webpack.config.js
+
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
