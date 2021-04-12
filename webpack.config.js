@@ -5,7 +5,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { camelCase } = require("camel-case");
 
 const federatedRemotes = {
-  "@cdssnc/scheduler": "1.0.0",
+  "@cdssnc/scheduler": "^1.0.0",
 };
 const deps = {
   ...federatedRemotes,
@@ -17,8 +17,6 @@ const unpkgRemote = (name) => {
   const pkg = `${camelCase(name)}@https://unpkg.com/${name}@${
     deps[name]
   }/dist/browser/remote-entry.js`;
-
-  console.log(pkg) 
 
   //const pkg = `${camelCase(name)}@http://localhost:3000/dist/browser/remote-entry.js`
 
