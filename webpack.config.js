@@ -35,10 +35,6 @@ const unpkgRemote = (name) => {
 );
 
 module.exports = {
-  output: {
-    publicPath: "http://localhost:8080/",
-  },
-
   resolve: {
     extensions: [".jsx", ".js", ".json"],
   },
