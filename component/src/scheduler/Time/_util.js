@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 export const populateTimes = (_24hr = false) => {
-  const startTime = 0
+  const startTime = 0;
   let times = [];
   let hours, hours24, minutes, ampm;
 
@@ -45,12 +45,16 @@ export const dateIsToday = (date) => {
     .set("second", 0)
     .set("millisecond", 0);
 
-  return today.isSame(dayjs(date[0]), 'day');
+  return today.isSame(dayjs(date[0]), "day");
 };
 
 export const timeValuesToday = (now, selected, time_values) => {
-  return time_values.filter(time => {
+  if (!time_values) {
+    return;
+  }
+
+  return time_values.filter((time) => {
     const t = dayjs(selected + "T" + time.val);
-    return t.isAfter(now)
-  })
-}
+    return t.isAfter(now);
+  });
+};

@@ -9,7 +9,7 @@ import {
   getLastDay,
   getNextDay,
   yearMonthDay,
-  getFirstAvailableDay
+  getFirstAvailableDay,
 } from "./Calendar/index";
 
 const LANGUAGES = ["en", "fr-ca"]; // en
@@ -26,33 +26,35 @@ const defautFirstDay = dayjs(defaultToday);
 export const defaultState = (
   data = {
     today: defaultToday,
-    firstDay: defautFirstDay
+    firstDay: defautFirstDay,
   }
 ) => {
-  let { today, firstDay } = data.defaultState ? data.defaultState: data;
+  let { today, firstDay } = data.defaultState ? data.defaultState : data;
 
-  const blockedDay = day => {
+  const blockedDay = (day) => {
     const beforeFirstDay = firstDay ? dayjs(day).isBefore(firstDay) : false;
     return (
-      today > day ||
-      beforeFirstDay ||
-      dayjs(day).isAfter(lastAvailableDate)
+      today > day || beforeFirstDay || dayjs(day).isAfter(lastAvailableDate)
     );
   };
 
   const time_values = populateTimes(LOCALE === "en" ? "off" : "on");
-  let timeValuesTodayLeft = timeValuesToday(today, [yearMonthDay(firstDay)], time_values);
+  let timeValuesTodayLeft = timeValuesToday(
+    today,
+    [yearMonthDay(firstDay)],
+    time_values
+  );
 
   let selectedTimeValue = null;
-  // Select first available time slot only if there are some left for the 
+  // Select first available time slot only if there are some left for the
   // current day, i.e. hour is less than 23h00.
   if (timeValuesTodayLeft && timeValuesTodayLeft.length > 0) {
     selectedTimeValue = timeValuesTodayLeft[0].val;
   }
   // If there are no time slots remaining in the current day, we are past
-  // 23h00 and we need to shift forward the first available day for scheduling. 
+  // 23h00 and we need to shift forward the first available day for scheduling.
   else {
-    const tomorrow = dayjs().add(1, 'day').startOf("date");
+    const tomorrow = dayjs().add(1, "day").startOf("date");
     firstDay = tomorrow;
     selectedTimeValue = time_values[0].val;
   }
@@ -72,7 +74,7 @@ export const defaultState = (
     errors: "",
     time: selectedTimeValue,
     time_values: time_values,
-    isBlockedDay: blockedDay
+    isBlockedDay: blockedDay,
   };
 };
 
@@ -101,7 +103,7 @@ export const StateProvider = ({ value, children }) => {
           updateMessage:
             action.payload === "off"
               ? "24 hr time selected"
-              : "AM PM time selected "
+              : "AM PM time selected ",
         };
         break;
       case "CALENDAR_UPDATES":
@@ -118,28 +120,24 @@ export const StateProvider = ({ value, children }) => {
         if (state.isBlockedDay(dayjs(action.payload))) {
           newState = { ...state };
         } else {
-          let newTime = dateIsToday([action.payload]) ? timeValuesToday([dayjs(), action.payload], state.time_values)[0].val : state.time;
+          let newTime;
+          try {
+            newTime = dateIsToday([action.payload])
+              ? timeValuesToday([dayjs(), action.payload], state.time_values)[0]
+                  .val
+              : state.time;
+          } catch (e) {
+            newTime = state.time;
+          }
+
           newState = {
             ...state,
             selected: setSelected(state.selected, action.payload),
             focusedDayNum: parseDay(action.payload),
-            time: newTime
+            time: newTime,
           };
 
           newState.errors = "";
-          /*
-          if (
-            newState.selected.length === 0
-          ) {
-            // show deselect error
-            newState.errors = [
-              {
-                id: "1",
-                text: "Date must be selected",
-                target: "Calendar-dates"
-              }
-            ];
-          }*/
         }
         break;
       case "SELECT_NEXT":
@@ -147,7 +145,7 @@ export const StateProvider = ({ value, children }) => {
         newState = {
           ...state,
           date: nextNewDate,
-          focusedDayNum: getFirstAvailableDay(nextNewDate, state)
+          focusedDayNum: getFirstAvailableDay(nextNewDate, state),
         };
         break;
       case "SELECT_PREVIOUS":
@@ -157,37 +155,37 @@ export const StateProvider = ({ value, children }) => {
         newState = {
           ...state,
           date: previousNewDate,
-          focusedDayNum: getFirstAvailableDay(previousNewDate, state)
+          focusedDayNum: getFirstAvailableDay(previousNewDate, state),
         };
         break;
       case "FOCUS_DAY":
         newState = {
           ...state,
-          focusedDayNum: action.payload.focused
+          focusedDayNum: action.payload.focused,
         };
         break;
       case "KEY_UP":
         newState = {
           ...state,
-          ...getNextDay(Number(state.focusedDayNum) - 7, state, "up")
+          ...getNextDay(Number(state.focusedDayNum) - 7, state, "up"),
         };
         break;
       case "KEY_DOWN":
         newState = {
           ...state,
-          ...getNextDay(Number(state.focusedDayNum) + 7, state, "down")
+          ...getNextDay(Number(state.focusedDayNum) + 7, state, "down"),
         };
         break;
       case "KEY_RIGHT":
         newState = {
           ...state,
-          ...getNextDay(Number(state.focusedDayNum) + 1, state, "right")
+          ...getNextDay(Number(state.focusedDayNum) + 1, state, "right"),
         };
         break;
       case "KEY_LEFT":
         newState = {
           ...state,
-          ...getNextDay(Number(state.focusedDayNum) - 1, state, "left")
+          ...getNextDay(Number(state.focusedDayNum) - 1, state, "left"),
         };
         break;
       default:
