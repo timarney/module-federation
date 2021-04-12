@@ -1,3 +1,4 @@
+const path = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
@@ -37,6 +38,10 @@ const unpkgRemote = (name) => {
 module.exports = {
   resolve: {
     extensions: [".jsx", ".js", ".json"],
+  },
+
+  output: {
+    path: path.resolve(__dirname, 'dist'),
   },
 
   devServer: {
