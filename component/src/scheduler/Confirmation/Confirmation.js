@@ -17,9 +17,6 @@ export const Confirmation = () => {
         <p>{translate("message_will_be_sent")}</p>
         <p><strong>{translate("date_prefix")}{dayjs(date).format(translate("date_format"))} {translate("at")} {timeFormat}</strong></p>
       </div>
-      <div>
-        <p>{translate('cancel')}</p>
-      </div>
     </div>
   ) : (
     <div className="confirmation unset">

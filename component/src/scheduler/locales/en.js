@@ -13,6 +13,5 @@ export const EN = {
   date_prefix: " ",
   date_format: "dddd, MMMM D, YYYY",
   time_format: "h:mm A",
-  cancel: "You can cancel this send before the scheduled time!",
   select_date: "Select a date and time to schedule the send."
 };

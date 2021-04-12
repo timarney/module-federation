@@ -5,7 +5,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { camelCase } = require("camel-case");
 
 const federatedRemotes = {
-  "@cdssnc/scheduler": "^1.0.0",
+  "@cdssnc/scheduler": "^1",
 };
 const deps = {
   ...federatedRemotes,
